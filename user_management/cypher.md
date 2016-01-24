@@ -38,3 +38,48 @@ LOAD CSV WITH HEADERS FROM 'https://raw.githubusercontent.com/dohr-michael/neo4j
 MATCH (g: Group {ref: toInt(line.Group)}), (r: Right {ref: toInt(line.Right)})
 CREATE g-[:HAS]->r
 ```
+
+Some requests :
+===============
+
+- Find all users.
+```
+MATCH (u :User)
+RETURN u
+```
+```
+MATCH (u :User)
+RETURN u ORDER BY u.name
+```
+
+
+- Find a user by name.
+```
+MATCH (u :User {name: 'Aquila Neal'})
+RETURN u
+```
+```
+MATCH (u :User) WHERE u.name = 'Aquila Neal'
+RETURN u
+```
+
+
+- Find all direct groups of a user.
+```
+MATCH (u :User {name: 'Nigel Strickland'})-[:BELONG_TO]->(g :Group)
+RETURN u, collect(DISTINCT g)
+```
+
+
+- Find all groups of a user.
+```
+MATCH (u :User {name: 'Nigel Strickland'})-[*..]->(g :Group)
+RETURN u, collect(DISTINCT g)
+```
+
+
+- Find all rights of a user.
+```
+MATCH (u :User {name: 'Nigel Strickland'})-[*..]->(g :Group)-[:HAS]->(r: Right)
+RETURN u, collect(DISTINCT r)
+```
