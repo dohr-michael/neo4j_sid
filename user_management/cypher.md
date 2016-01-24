@@ -29,7 +29,7 @@ CREATE u-[:BELONG_TO]->g
 ```
 LOAD CSV WITH HEADERS FROM 'https://raw.githubusercontent.com/dohr-michael/neo4j_sid/master/user_management/groups_groups.csv' AS line
 MATCH (g1: Group {ref: toInt(line.Group)}), (g2: Group {ref: toInt(line.PartOf)})
-CREATE g1-[:PART_OF]->g2
+CREATE g1-[:BELONG_TO]->g2
 ```
 
 - Create Links Between Groups and Rights
