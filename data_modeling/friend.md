@@ -22,7 +22,9 @@ CREATE (obi)-[:knows]->(chuwi)
 
 Find unknows friend of my friend
 --------------------------------
+```
 MATCH (luke :FriendPerson {name: 'Luke'})-[:knows*2..2]-(friend_of_friend :FriednPerson)
 WHERE NOT (luke)-[:knows]-(friend_of_friend)
 RETURN friend_of_friend.name, count(*)
 ORDER BY COUNT(*) DESC , friend_of_friend.name
+```
