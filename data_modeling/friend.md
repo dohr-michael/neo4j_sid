@@ -18,7 +18,7 @@ CREATE (joda)-[:knows]->(qui)
 CREATE (joda)-[:knows]->(windu)
 CREATE (obi)-[:knows]->(qui)
 CREATE (obi)-[:knows]->(chuwi)
-``
+```
 
 Find unknows friend of my friend
 --------------------------------
