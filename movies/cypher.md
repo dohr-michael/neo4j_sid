@@ -62,3 +62,9 @@ AND line.Actor = a.firstName + '-' + a.lastName
 CREATE (a)-[:ACT_IN {role: line.Role}]->(m)
 ```
 
+```
+LOAD CSV WITH HEADERS FROM 'https://raw.githubusercontent.com/dohr-michael/neo4j_sid/master/movies/genres.csv' AS line FIELDTERMINATOR '#'
+// Format : Name,Genre
+MATCH (m:Movie {name: line.Name}),(a:Genre {name: line.Genre})
+CREATE (m)-[:IS_A]->(a)
+```
