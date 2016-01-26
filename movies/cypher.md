@@ -18,3 +18,15 @@ LOAD CSV WITH HEADERS FROM 'https://raw.githubusercontent.com/dohr-michael/neo4j
 // Format : Name,LastName
 CREATE (:Actor {firstName: line.Name, lastName: line.LastName})
 ````
+
+Indexes
+-------
+```
+CREATE INDEX ON :Movie(name)
+```
+```
+CREATE INDEX ON :Actor(firstName)
+```
+```
+CREATE INDEX ON :Actor(lastName)
+```
