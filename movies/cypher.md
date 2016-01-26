@@ -17,7 +17,26 @@ Actors
 LOAD CSV WITH HEADERS FROM 'https://raw.githubusercontent.com/dohr-michael/neo4j_sid/master/movies/actors.csv' AS line FIELDTERMINATOR '#'
 // Format : Name,LastName
 CREATE (:Actor {firstName: line.Name, lastName: line.LastName})
-````
+```
+
+Countries
+---------
+
+```
+LOAD CSV WITH HEADERS FROM 'https://raw.githubusercontent.com/dohr-michael/neo4j_sid/master/movies/countries.csv' AS line FIELDTERMINATOR '#'
+// Format : Name
+CREATE (:Country {name: line.Name})
+```
+
+Genres
+------
+
+```
+LOAD CSV WITH HEADERS FROM 'https://raw.githubusercontent.com/dohr-michael/neo4j_sid/master/movies/genres_cat.csv' AS line FIELDTERMINATOR '#'
+// Format : Name
+CREATE (g:Genre {name: line.Name})
+```
+
 
 Indexes
 -------
@@ -30,3 +49,16 @@ CREATE INDEX ON :Actor(firstName)
 ```
 CREATE INDEX ON :Actor(lastName)
 ```
+
+Links
+-----
+
+```
+LOAD CSV WITH HEADERS FROM 'https://raw.githubusercontent.com/dohr-michael/neo4j_sid/master/movies/actors_movies.csv' AS line FIELDTERMINATOR '#'
+// Format : Movie,Actor,Role
+MATCH (m:Movie),(a:Actor)
+WHERE m.name = line.Movie
+AND line.Actor = a.firstName + '-' + a.lastName
+CREATE (a)-[:ACT_IN {role: line.Role}]->(m)
+```
+
