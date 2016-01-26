@@ -54,7 +54,47 @@ Links
 -----
 
 ```
-LOAD CSV WITH HEADERS FROM 'https://raw.githubusercontent.com/dohr-michael/neo4j_sid/master/movies/actors_movies.csv' AS line FIELDTERMINATOR '#'
+LOAD CSV WITH HEADERS FROM 'https://raw.githubusercontent.com/dohr-michael/neo4j_sid/master/movies/actors_movies-1.csv' AS line FIELDTERMINATOR '#'
+// Format : Movie,Actor,Role
+MATCH (m:Movie),(a:Actor)
+WHERE m.name = line.Movie
+AND line.Actor = a.firstName + '-' + a.lastName
+CREATE (a)-[:ACT_IN {role: line.Role}]->(m)
+```
+```
+LOAD CSV WITH HEADERS FROM 'https://raw.githubusercontent.com/dohr-michael/neo4j_sid/master/movies/actors_movies-2.csv' AS line FIELDTERMINATOR '#'
+// Format : Movie,Actor,Role
+MATCH (m:Movie),(a:Actor)
+WHERE m.name = line.Movie
+AND line.Actor = a.firstName + '-' + a.lastName
+CREATE (a)-[:ACT_IN {role: line.Role}]->(m)
+```
+```
+LOAD CSV WITH HEADERS FROM 'https://raw.githubusercontent.com/dohr-michael/neo4j_sid/master/movies/actors_movies-3.csv' AS line FIELDTERMINATOR '#'
+// Format : Movie,Actor,Role
+MATCH (m:Movie),(a:Actor)
+WHERE m.name = line.Movie
+AND line.Actor = a.firstName + '-' + a.lastName
+CREATE (a)-[:ACT_IN {role: line.Role}]->(m)
+```
+```
+LOAD CSV WITH HEADERS FROM 'https://raw.githubusercontent.com/dohr-michael/neo4j_sid/master/movies/actors_movies-4.csv' AS line FIELDTERMINATOR '#'
+// Format : Movie,Actor,Role
+MATCH (m:Movie),(a:Actor)
+WHERE m.name = line.Movie
+AND line.Actor = a.firstName + '-' + a.lastName
+CREATE (a)-[:ACT_IN {role: line.Role}]->(m)
+```
+```
+LOAD CSV WITH HEADERS FROM 'https://raw.githubusercontent.com/dohr-michael/neo4j_sid/master/movies/actors_movies-5.csv' AS line FIELDTERMINATOR '#'
+// Format : Movie,Actor,Role
+MATCH (m:Movie),(a:Actor)
+WHERE m.name = line.Movie
+AND line.Actor = a.firstName + '-' + a.lastName
+CREATE (a)-[:ACT_IN {role: line.Role}]->(m)
+```
+```
+LOAD CSV WITH HEADERS FROM 'https://raw.githubusercontent.com/dohr-michael/neo4j_sid/master/movies/actors_movies-6.csv' AS line FIELDTERMINATOR '#'
 // Format : Movie,Actor,Role
 MATCH (m:Movie),(a:Actor)
 WHERE m.name = line.Movie
