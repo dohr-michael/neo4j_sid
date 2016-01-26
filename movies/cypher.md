@@ -68,3 +68,10 @@ LOAD CSV WITH HEADERS FROM 'https://raw.githubusercontent.com/dohr-michael/neo4j
 MATCH (m:Movie {name: line.Name}),(a:Genre {name: line.Genre})
 CREATE (m)-[:IS_A]->(a)
 ```
+
+```
+LOAD CSV WITH HEADERS FROM 'https://raw.githubusercontent.com/dohr-michael/neo4j_sid/master/movies/countries_movies.csv' AS line FIELDTERMINATOR '#'
+// Format : Movie,Country
+MATCH (m:Movie {name: line.Movie}),(a:Country {name: line.Country})
+CREATE (m)-[:MADE_IN]->(a)
+```
