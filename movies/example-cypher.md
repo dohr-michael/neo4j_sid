@@ -22,7 +22,7 @@ Average of ratings  (if ratings > 0):
 
 
 Kevin Spacey Best note
-> MATCH (m: Movie)<-[:ACT_IN]-(k: Actor {firstName: 'Kevin', lastName: 'Spacey'}) RETURN m.name ORDER BY m.rating LIMIT 1
+> MATCH (m: Movie)<-[:ACT_IN]-(k: Actor {firstName: 'Kevin', lastName: 'Spacey'}) RETURN m.name, m.rating ORDER BY m.rating DESC LIMIT 1
 
 Movies per actor
 
