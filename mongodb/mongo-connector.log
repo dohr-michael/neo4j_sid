@@ -1,0 +1,55 @@
+2016-01-27 07:30:43,137 [WARNING] mongo_connector.connector:116 - MongoConnector: Can't find oplog.timestamp, attempting to create an empty progress log
+2016-01-27 07:30:43,147 [ERROR] mongo_connector.connector:277 - No replica set at "localhost:27017"! A replica set is required to run mongo-connector. Shutting down...
+2016-01-27 07:31:45,583 [ERROR] mongo_connector.connector:277 - No replica set at "localhost:27017"! A replica set is required to run mongo-connector. Shutting down...
+2016-01-27 07:39:05,832 [ERROR] mongo_connector.util:87 - Fatal Exception
+2016-01-27 07:40:47,184 [ERROR] mongo_connector.connector:277 - No replica set at "localhost:27017"! A replica set is required to run mongo-connector. Shutting down...
+2016-01-27 07:41:22,728 [ERROR] mongo_connector.util:87 - Fatal Exception
+2016-01-27 07:55:59,482 [ERROR] mongo_connector.oplog_manager:277 - Unable to process oplog document {u'h': 4915669830697148206L, u'ts': Timestamp(1453877759, 1), u'o': {u'_id': ObjectId('56a8693370958599966712e0'), u'groups': [{u'name': u'Admin'}, {u'name': u'User'}]}, u't': 1L, u'v': 2, u'ns': u'neo.users', u'o2': {u'_id': ObjectId('56a8693370958599966712e0')}, u'op': u'u'}
+Traceback (most recent call last):
+  File "/Library/Python/2.7/site-packages/mongo_connector/oplog_manager.py", line 263, in run
+    ns, timestamp)
+  File "/Library/Python/2.7/site-packages/mongo_connector/util.py", line 38, in wrapped
+    reraise(new_type, exc_value, exc_tb)
+  File "/Library/Python/2.7/site-packages/mongo_connector/util.py", line 32, in wrapped
+    return f(*args, **kwargs)
+  File "/Library/Python/2.7/site-packages/mongo_connector/doc_managers/neo4j_doc_manager.py", line 101, in update
+    tx.commit()
+  File "/Library/Python/2.7/site-packages/py2neo/cypher/core.py", line 333, in commit
+    return self.post(self.__commit or self.__begin_commit)
+  File "/Library/Python/2.7/site-packages/py2neo/cypher/core.py", line 288, in post
+    raise self.error_class.hydrate(error)
+Neo4jOperationFailed: Collections containing mixed types can not be stored in properties.
+2016-01-27 08:03:30,098 [ERROR] mongo_connector.oplog_manager:277 - Unable to process oplog document {u'h': 340651498881146195L, u'ts': Timestamp(1453878210, 1), u'o': {u'groups_id': [u'56a86aff70958599966712e3', u'56a86b0b70958599966712e5'], u'name': u'Michael'}, u't': 1L, u'v': 2, u'ns': u'neo.users', u'op': u'i'}
+Traceback (most recent call last):
+  File "/Library/Python/2.7/site-packages/mongo_connector/oplog_manager.py", line 256, in run
+    docman.upsert(doc, ns, timestamp)
+  File "/Library/Python/2.7/site-packages/mongo_connector/util.py", line 38, in wrapped
+    reraise(new_type, exc_value, exc_tb)
+  File "/Library/Python/2.7/site-packages/mongo_connector/util.py", line 32, in wrapped
+    return f(*args, **kwargs)
+  File "/Library/Python/2.7/site-packages/mongo_connector/doc_managers/neo4j_doc_manager.py", line 64, in upsert
+    builder = NodesAndRelationshipsBuilder(doc, doc_type, doc_id)
+  File "/Library/Python/2.7/site-packages/mongo_connector/doc_managers/nodes_and_relationships_builder.py", line 17, in __init__
+    self.build_nodes_query(doc_type, doc, doc_id)
+  File "/Library/Python/2.7/site-packages/mongo_connector/doc_managers/nodes_and_relationships_builder.py", line 24, in build_nodes_query
+    self.build_node_with_reference(doc_type, key, id, document[key])
+  File "/Library/Python/2.7/site-packages/mongo_connector/doc_managers/nodes_and_relationships_builder.py", line 56, in build_node_with_reference
+    self.explicit_ids.update({document_key: doc_type})
+Neo4jOperationFailed: unhashable type: 'list'
+2016-01-27 08:06:54,315 [ERROR] mongo_connector.oplog_manager:277 - Unable to process oplog document {u'h': -4099707966729427284L, u'ts': Timestamp(1453878414, 1), u'o': {u'groups_id': [ObjectId('56a86aff70958599966712e3'), ObjectId('56a86b0b70958599966712e5')], u'name': u'Michael'}, u't': 1L, u'v': 2, u'ns': u'neo.users', u'op': u'i'}
+Traceback (most recent call last):
+  File "/Library/Python/2.7/site-packages/mongo_connector/oplog_manager.py", line 256, in run
+    docman.upsert(doc, ns, timestamp)
+  File "/Library/Python/2.7/site-packages/mongo_connector/util.py", line 38, in wrapped
+    reraise(new_type, exc_value, exc_tb)
+  File "/Library/Python/2.7/site-packages/mongo_connector/util.py", line 32, in wrapped
+    return f(*args, **kwargs)
+  File "/Library/Python/2.7/site-packages/mongo_connector/doc_managers/neo4j_doc_manager.py", line 64, in upsert
+    builder = NodesAndRelationshipsBuilder(doc, doc_type, doc_id)
+  File "/Library/Python/2.7/site-packages/mongo_connector/doc_managers/nodes_and_relationships_builder.py", line 17, in __init__
+    self.build_nodes_query(doc_type, doc, doc_id)
+  File "/Library/Python/2.7/site-packages/mongo_connector/doc_managers/nodes_and_relationships_builder.py", line 24, in build_nodes_query
+    self.build_node_with_reference(doc_type, key, id, document[key])
+  File "/Library/Python/2.7/site-packages/mongo_connector/doc_managers/nodes_and_relationships_builder.py", line 56, in build_node_with_reference
+    self.explicit_ids.update({document_key: doc_type})
+Neo4jOperationFailed: unhashable type: 'list'

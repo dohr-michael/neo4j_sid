@@ -1,0 +1,29 @@
+{
+  "__comment__": "Configuration options starting with '__' are disabled",
+  "__comment__": "To enable them, remove the preceding '__'",
+
+  "mainAddress": "localhost:27017",
+  "oplogFile": "oplog.timestamp",
+  "noDump": false,
+  "batchSize": -1,
+  "verbosity": 1,
+  "continueOnError": false,
+
+  "__fields": ["session", "timeslot", "title"],
+
+  "namespaces": {
+    "__include": ["test.talks"]
+  },
+
+  "docManagers": [
+    {
+      "docManager": "neo4j_doc_manager",
+      "targetURL": "http://localhost:7474/db/data",
+      "args": {
+        "clientOptions": {
+          "collection": "neo"
+        }
+      }
+    }
+  ]
+}
